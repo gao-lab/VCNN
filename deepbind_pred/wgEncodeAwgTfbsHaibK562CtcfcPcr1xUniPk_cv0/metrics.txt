@@ -1,0 +1,9 @@
+              test	train
+auc           0.979076	0.983312
+auc.mean      0.979178	0.983304
+auc.std       0.000763157	0.00021224
+loss          nan	0.082780
+pearson.p     0.00e+00	0.00e+00
+pearson.r     0.887167	0.899449
+spearman.p    0.00e+00	0.00e+00
+spearman.r    0.829755	0.836552
