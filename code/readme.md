@@ -1,11 +1,11 @@
 # Source code guideline
 
 ## Pre-set:
-Download the dataset from ftp://ftp.cbi.pku.edu.cn/pub/supplementary_file/VCNN_NIPS18/simu_data.tar.gz  .
+Download the dataset from "ftp://ftp.cbi.pku.edu.cn/pub/supplementary_file/VCNN_NIPS18/simu_data.tar.gz".
 Uncompress the "simu_data_NIPS.tar.gz" and put the data directory at the root directory of the program to set up simulation dataset.
 
-Download the parameters of the models form ftp://ftp.cbi.pku.edu.cn/pub/supplementary_file/VCNN_NIPS18/model_parameter.tar.gz  .
-Uncompress the "model_parameter.tar.gz " and put the model_parameter directory at the  result result directory to set up parameters of Models.
+Download the parameters of the models form "ftp://ftp.cbi.pku.edu.cn/pub/supplementary_file/VCNN_NIPS18/model_parameter.tar.gz".
+Uncompress the "model_parameter.tar.gz " and put the model_parameter directory at the  result directory to set up parameters of Models.
 
 ## (1) Directory organization
 
