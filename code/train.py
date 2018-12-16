@@ -8,6 +8,7 @@ import sys
 
 root = "../"
 # the place to save your data (690 datasets in deepbind's work)
+# MIT_data_root = "/home/lijy/dataset/MITdata/Hdf5/"
 MIT_data_root = ""
 MIT_result_root = "../result/MIT_result/"
 
@@ -40,7 +41,7 @@ def train_MIT_dataset(data_root = MIT_data_root,result_root = MIT_result_root):
     data_info_lst = get_data_info()
     mode_lst = ["vCNN_IC"]
     ker_len_lst = [8]
-    seed_lst = [2333] # #12, 1234, 432, 3456, 123
+    seed_lst = [666]
     cmd = "THEANO_FLAGS=device=cuda,floatX=float32 " \
           "python main.py"
     mkdir(result_root)
@@ -57,7 +58,8 @@ def train_MIT_dataset(data_root = MIT_data_root,result_root = MIT_result_root):
 def train_simu(data_root = simu_data_root,result_root = simu_result_root):
     data_info_lst = ["simu_03","simu_01","simu_02"]
     mode_lst = ["vCNN_IC","CNN"]
-    seed_lst = [12, 1234, 432, 3456, 123]
+    # set random seeds
+    seed_lst = [121,1231,12341,1234,123,12,16,233,2333,23,245,34561,3456,4321,432,6]
     cmd = "THEANO_FLAGS=device=cuda,floatX=float32 " \
           "python main_simu.py"
     mkdir(result_root)
@@ -66,7 +68,7 @@ def train_simu(data_root = simu_data_root,result_root = simu_result_root):
         for data_info in data_info_lst:
             for mode in mode_lst:
                 tmp_cmd = str(cmd + " " + data_root + " " + result_root + " " + data_info + " " + mode \
-                              + " " + str(seed) + " " + str(0))
+                              + " " + str(seed) + " " + str(1))
                 print(tmp_cmd)
                 os.system(tmp_cmd)
 
@@ -77,6 +79,11 @@ else:
     if train_mode == "simu":
         train_simu()
     elif train_mode == "deepbind":
-        train_MIT_dataset()
+        if len(sys.argv)<3:
+            print("please enter the path of deepbind's data set ")
+            print("download it from: http://cnn.csail.mit.edu")
+            exit(1)
+        MIT_data_root = sys.argv[2]
+        train_MIT_dataset(data_root = MIT_data_root)
     else:
         print("no matching train_mode: ",train_mode)

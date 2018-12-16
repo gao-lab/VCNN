@@ -5,15 +5,17 @@ Download the dataset from "ftp://ftp.cbi.pku.edu.cn/pub/supplementary_file/VCNN_
 Uncompress the "simu_data_NIPS.tar.gz" and put the data directory at the root directory of the program to set up simulation dataset.
 
 Download the parameters of the models form "ftp://ftp.cbi.pku.edu.cn/pub/supplementary_file/VCNN_NIPS18/model_parameter.tar.gz".
-Uncompress the "model_parameter.tar.gz " and put the model_parameter directory at the  result directory to set up parameters of Models.
+Uncompress the "model_parameter.tar.gz " and put the model_parameter directory at the result directory to set up parameters of Models.
+
+Download and preprocessing Deepbind's data set. Run "python wgetall.py" under /code dir. It will download all the dataset automatically. The result will be saved in /code/cnn.csail.mit.edu/motif_discovery/.  Then Run "python seq_to_matrix.py" under /code/ dir, it will convert the original dataset into one-hot representation which can be used for further training. The result will be saved in /code/cnn.csail.mit.edu/HDF5/ . This path need to pass through command line when training the model.
+
+REMARK: Code needs to run on python 2
 
 ## (1) Directory organization
 
 All the paths in code directory is relative path. And by default, the root path is "../".
 
 Simulation data is under: root + "data/". There are three simulation data sets: "simu_01", "simu_02", "simu_03" under this directory.  
-
-Deepbind's data set is not included here (because it is open source. And it is too big for this repository). Have to down load from ("http://cnn.csail.mit.edu"). Then save it as hdf5 format and set "MIT_data_root" to the root directory of the data.
 
 Motifs in simulation dataset are saved in: root + "mtf_pwm/" and the seqLogo in under: root + "mtf_img/". Also motifs are sorted according to simulation dataset under: root + "simu_mtf/"
 
@@ -33,11 +35,13 @@ All results are saved under: result_root =  root + "result/". Under this directo
 
 ## (1) Theoretical scoring
 
-Using function: "run_preal_plot"  to generate the theoretical score. 
+Code for this section is in sorted_explain.py file. Using "ipython sorted_explain.py [parameter]" to regenerate the result.
 
-Using function: " run_draw_detail_CNN_kerLen" to draw average AUCs for different kernel lengths and data sets.
+Set [parameter] as "run_preal_plot"  to generate the theoretical score. 
 
-Using class "visu_detail_AvePreal" to further visualize the p_real. The result will saved in 
+Set [parameter] as " draw_detail_CNN_kerLen" to draw average AUCs for different kernel lengths and data sets.
+
+Set [parameter] as  "visu_detail_AvePreal" to further visualize the p_real. 
 
 ### requirement:
 
@@ -49,7 +53,7 @@ Using class "visu_detail_AvePreal" to further visualize the p_real. The result w
 
 ### (a) Training:
 
-Go to code directory and run: "ipython train.py  simu". Pass the key word "simu", to refer to run 	simulation dataset. The result will be saved in:  result_root + "simu_result/"
+Go to code directory and run: "ipython train.py  simu". Pass the key word "simu", to refer to run simulation dataset. The result will be saved in:  result_root + "simu_result/". Remark: train.py will force to Using python interpreter in PATH. And it will use "KERAS_BACKEND" by default. Run all the simulation results may take about 2 days. All the trained result and model parameters can be downloaded from "ftp://ftp.cbi.pku.edu.cn/pub/supplementary_file/VCNN_NIPS18/model_parameter.tar.gz". One can choose to download and unzip under /result dir and continue the following tests.
 
 ### (b) Draw AUC box-plot
 
@@ -67,15 +71,15 @@ Using convolutional score to compare the similarity between kernel (recovered PW
 
 ### (a) Requirement
 
-pre-download deepbind's result. Save it as a python dictionary ({dataset name: AUC}). Save it under result_root + "MIT_sorted/MIT_baseline.pkl"
+Deepbind's result has been downloaded and saved as  "result/MIT_sorted/MIT_baseline.pkl" . 
 
 ### (b) Run model on Deepbind's dataset
 
-Go to code directory and run "ipython train.py deepbind". The result will be saved in: result_root +  "MIT_result/". Have to down load the Deepbind's dataset and set "MIT_data_root" to the root directory of the data.
+Go to code directory and run "ipython train.py deepbind [dataDir]". The result will be saved in: result_root +  "MIT_result/". Required to download Deepbind's dataset and pass the path through the command line.  Details about dataset preparation, referring to "Pre-set" section. Run all the results may take days. One can also continue the following process by downloading the trained parameters from "ftp://ftp.cbi.pku.edu.cn/pub/supplementary_file/VCNN_NIPS18/model_parameter.tar.gz". Unzip under /result dir and continue the following tests to compare the results.
 
 ### (c) Visualize the result:
 
-Go to code directory and run "ipython deepbind_cmpare.py visualize". The result will be saved under: Save it under: result_root + "MIT_sorted/".
+Go to code directory and run "ipython deepbind_compare.py visualize". The result will be saved under: Save it under: result_root + "MIT_sorted/".
 
 ### (d) Save AUC in csv files:
 

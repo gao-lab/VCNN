@@ -1,14 +1,4 @@
 # -*- coding: utf-8 -*-
-'''
-run on simulation data set
-using a bash file to pass parameters:
-    data_root: the dir where data is saved
-    result_root: the dir where result is save
-    data_info: the data set's name
-    mode: either "CNN" or "vCNN_IC"
-    seed: random seed
-    gpu_usage: which gpu to use, "0" for default
-'''
 import os
 import h5py
 import sys
@@ -18,7 +8,7 @@ import numpy as np
 import unittest
 import random
 import keras
-from build_models import train_vCNN_IC,train_CNN
+from build_models import build_vCNN_IC,train_vCNN_IC,train_CNN
 from my_history import Histories
 from keras.callbacks import LearningRateScheduler
 from sklearn.metrics import roc_auc_score
@@ -56,39 +46,38 @@ def load_dataset(dataset):
     label = data['labs'].value
     return ([sequence_code, label])
 
-# organization of sys.argv
-# data_root + " " + result_root + " " + data_info + " " + mode \
-# + " " + seed + " " + gpu_usage
+# tmp_cmd = str(cmd + " " + data_root + " " + result_root + " " + data_info + " " + mode \
+#                               + " " + str(seed) + " " + str(0))
 
 data_root = check_dir_end(sys.argv[1])
 result_root = check_dir_end(sys.argv[2])
 data_info = sys.argv[3]
 mode = sys.argv[4]
 seed = int(sys.argv[5])
+ker_len = 8 # set kernel length as 8
 
 data_dir = check_dir_end(data_root+data_info)
-
+# print(data_dir)
+# exit
 result_root = check_dir_end(result_root + data_info)
 mkdir(result_root)
 result_root = check_dir_end(result_root + mode)
 mkdir(result_root)
 
-train_dataset = load_dataset(data_dir + "training_set.hdf5")
-test_dataset = load_dataset(data_dir + "test_set.hdf5")
-number_of_ker_list = [80,100,120] #add kernel number as another parameter
-ker_len_lst = [4,6,8,16,24,32] #add kernel length 4 and 6 for compare
+train_dataset = load_dataset(data_dir + "train.hdf5")
+test_dataset = load_dataset(data_dir + "test.hdf5")
+number_of_ker_list = [128]
 batch_size = 100
 kernel_max_len = 50
 input_shape=test_dataset[0][0].shape
 print("input_shape",input_shape)
 for filters in number_of_ker_list:
-    for ker_len in ker_len_lst:
-        if mode == "vCNN_IC":
-            train_vCNN_IC(input_shape=input_shape, modelsave_output_prefix=result_root,
-                          data_set=[train_dataset, test_dataset], number_of_kernel=filters, max_ker_len=kernel_max_len,
-                          init_ker_len=ker_len, random_seed=seed, batch_size=batch_size, n_epoch=40, IC_thrd=0.05,
-                          jump_trained=True)
-        elif mode == "CNN":
-            train_CNN(input_shape=input_shape, modelsave_output_prefix=result_root,
-                          data_set=[train_dataset, test_dataset], number_of_kernel=filters, kernel_size = ker_len,
-                 random_seed=seed, batch_size=batch_size, epoch_scheme=[40])
+    if mode == "vCNN_IC":
+        train_vCNN_IC(input_shape=input_shape, modelsave_output_prefix=result_root,
+                      data_set=[train_dataset, test_dataset], number_of_kernel=filters, max_ker_len=kernel_max_len,
+                      init_ker_len=ker_len, random_seed=seed, batch_size=batch_size, n_epoch=40, IC_thrd=0.05,
+                      jump_trained=True)
+    elif mode == "CNN":
+        train_CNN(input_shape=input_shape, modelsave_output_prefix=result_root,
+                  data_set=[train_dataset, test_dataset], number_of_kernel=filters, kernel_size=ker_len,
+                  random_seed=seed, batch_size=batch_size, epoch_scheme=[40])

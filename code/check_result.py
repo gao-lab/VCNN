@@ -105,7 +105,7 @@ def scoring_kernels(kernels,mtf_dic):
     '''
     ker_num = len(kernels)
     ret = {}
-    print(mtf_dic.keys())
+    # print(mtf_dic.keys())
     for mtf_name in mtf_dic.keys():
         mtf = mtf_dic[mtf_name]
         best_score = -1
@@ -149,39 +149,62 @@ def score_ker_mtf(ker_cut_threshold = 0.01,result_root = simu_kerDB_root,img_sav
         IC_judge = [idx for idx in range(len(IC_lst)) if IC_lst[idx] > ker_cut_threshold]
         return ker[IC_judge[0]:IC_judge[-1]]
     def load_kers(root_path):
-        print(root_path)
+        # print(root_path)
         root_path = check_dir_last(root_path)
-        p_lst = glob.glob(root_path+"*.txt")
+        p_lst = glob.glob(os.path.join(root_path,"*.txt"))
         kernels = [cut_ker(np.loadtxt(p)) for p in p_lst]
         return kernels
-    def draw_bar_plot(data_info,ret,score_type):
+    def draw_box_plot(data_info,ret,score_type):
+        def sort_data(lst):
+            r = {}
+            for it in lst:
+                for key in it:
+                    if key not in r:
+                        r[key] = []
+                    r[key].append(it[key]["conv_score"])
+            return r
         save_p = check_dir_last(img_save_root) + score_type + "_" + data_info + ".png"
         plt.clf()
         mode_lst = list(ret.keys())
-        print("mode_lst",mode_lst)
+        # print("mode_lst",mode_lst)
         mode_num = len(mode_lst)
         mtf_name_lst = []
+        plot_data = {} # data stored for plot
         for idx in range(mode_num):
             score_lst = []
             mode = mode_lst[idx]
-            r = ret[mode]
+            r = sort_data(ret[mode])
             mtf_name_lst = r.keys()
+
             for mtf_name in mtf_name_lst:
-                score_lst.append(r[mtf_name][score_type])
-            plt.bar(np.arange(len(score_lst))+0.3*idx+0.3,score_lst,width = 0.05*len(score_lst),label=mode)
-            print("score_lst",score_lst)
-        plt.xticks(np.arange(len(mtf_name_lst))+0.5, [clear_transfac_name(it) for it in mtf_name_lst], size='small')
-        plt.title(" ".join([data_info,score_type]))
-        if len(mtf_name_lst) == 1:
-            plt.xlim(0.1,0.9)
-        elif len(mtf_name_lst) ==2:
-            plt.xlim(0.1,1.9)
-        else:
-            raise NotImplemented
+                if mtf_name not in plot_data:
+                    plot_data[mtf_name] = []
+                plot_data[mtf_name].append(r[mtf_name])
+        num_of_mtf = len(plot_data)
+        if num_of_mtf == 1:
+            mtf_name = plot_data.keys()[0]
+            plt.boxplot(plot_data[mtf_name])
+            plt.ylim(0,11)
+            plt.ylabel("conv_score")
+            plt.xticks(np.arange(2)+1,mode_lst)
+            plt.title(" ".join([data_info,mtf_name]))
+        if num_of_mtf == 2:
+            mtf_name_lst = plot_data.keys()
+            plt.subplot(121)
+            plt.ylim(0,11)
+            plt.boxplot(plot_data[mtf_name_lst[0]])
+            plt.ylabel("conv_score")
+            plt.xticks(np.arange(2)+1,mode_lst)
+            plt.title(" ".join([data_info,mtf_name_lst[0]]))
 
+            plt.subplot(122)
+            plt.ylim(0,11)
+            plt.boxplot(plot_data[mtf_name_lst[1]])
+            plt.ylabel("conv_score")
+            plt.xticks(np.arange(2)+1,mode_lst)
+            plt.title(" ".join([data_info,mtf_name_lst[1]]))
+            #ax2.ylim(0,11)
 
-        plt.ylim(0,11)
-        plt.legend(loc = "upper right")
         plt.savefig(save_p)
         return
     # save the recovered kernel
@@ -196,10 +219,10 @@ def score_ker_mtf(ker_cut_threshold = 0.01,result_root = simu_kerDB_root,img_sav
     ret = {}
     for mode in mode_lst:
         tmp_p = check_dir_last(result_root)
-        print(tmp_p)
+        # print(tmp_p)
         tmp_lst = glob.glob(tmp_p+"*")
         data_info_lst = [check_dir_last(check_dir_last(it)).split("/")[-2] for it in tmp_lst]
-        print("data_info_lst: ",data_info_lst)
+        # print("data_info_lst: ",data_info_lst)
         for data_info in data_info_lst:
             mtf_dir = check_dir_last(check_dir_last(check_dir_last(mtf_root)+data_info))
             mtf_p_lst = glob.glob(mtf_dir+"*.txt")
@@ -207,18 +230,21 @@ def score_ker_mtf(ker_cut_threshold = 0.01,result_root = simu_kerDB_root,img_sav
             for p in mtf_p_lst:
                 mtf_name = check_dir_last(p).split("/")[-2]
                 mtf_name = mtf_name.replace(".txt","").replace("simu","").replace("tot","")
-                print("mtf_name: ",mtf_name)
+                # print("mtf_name: ",mtf_name)
                 mtf_dic[mtf_name] = np.loadtxt(p)
             ker_root = check_dir_last(check_dir_last(result_root + data_info ) + mode)
-            kernels = load_kers(ker_root)
-            r = scoring_kernels(kernels,mtf_dic)
+            # iterate through different models
+            sorted_ret  = []
+            p_lst = glob.glob(os.path.join(ker_root,"*"))
+            for p in p_lst:
+                kernels = load_kers(p)
+                r = scoring_kernels(kernels,mtf_dic)
+                sorted_ret.append(r)
             if data_info not in ret.keys():
                 ret[data_info] = {}
-            ret[data_info][mode] = r
-        print(ret)
-    for data_info in ret.keys():
-        draw_bar_plot(data_info, ret[data_info], score_type="conv_score")
-    save_best_PWM(ret)
+            ret[data_info][mode] = sorted_ret
+    for data_info in ret:
+        draw_box_plot(data_info,ret[data_info],"conv_score")
     return ret
 
 # draw auc box plot among different hyper-parameters in each data set
@@ -226,8 +252,8 @@ def sort_auc(result_root = simu_result_root):
     # get all data info under data_root
     def get_data_info(data_root):
         lst = glob.glob(check_dir_last(data_root) + "*")
-        print(data_root)
-        print(lst)
+        # print(data_root)
+        # print(lst)
         return [check_dir_last(it).split("/")[-2] for it in lst]
     # load all the auc in each data set
     # among all hyper parameters
@@ -261,7 +287,7 @@ def sort_auc(result_root = simu_result_root):
             draw_a_plot(tmp_r, data_info)
 
     data_info_lst = get_data_info(result_root)
-    print(data_info_lst)
+    # print(data_info_lst)
     mode_lst = ["vCNN_IC","CNN"]
     ret = {}
     for data_info in data_info_lst:
@@ -283,5 +309,3 @@ elif sys.argv[1] == "simu_auc_box":
     sort_auc()
 elif sys.argv[1] == "score_ker_mtf":
     score_ker_mtf()
-
-

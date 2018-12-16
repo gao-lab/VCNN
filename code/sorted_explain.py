@@ -439,7 +439,7 @@ class visu_detail_AvePreal(visu_core):
 def run_preal_plot():
     demo_mtf_name_lst = ["simuMtf_Len-8_totIC-10", "simuMtf_Len-23_totIC-12"]
     p_ideal_lst = (np.arange(19) + 1) * 0.05
-    kerLen_lst = [8,16,24,32]
+    kerLen_lst = [4,6,8,16,24,32] # combine extra explain together
 
     for demo_mtf_name in demo_mtf_name_lst:
         print("demo_mtf_name: ",demo_mtf_name)
@@ -469,6 +469,7 @@ def draw_detail_CNN_kerLen(data_info,model_root,output_dir):
     plt.title(data_info + " kerLen auc")
     plt.xlabel("kerLen")
     plt.ylabel("average_auc")
+    # plt.ylim([0.3,1])
     def decode_CNN_fileName(fp):
         # Report_KernelNum-100_KernelLen-8_seed-123_batch_size-100.pkl
         KernelNum = 0
@@ -508,7 +509,7 @@ def draw_detail_CNN_kerLen(data_info,model_root,output_dir):
     for kerLen in kerLen_lst:
         y.append(np.array(auc_data[kerLen]).mean())
     plt.bar(np.arange(len(kerLen_lst)),y,width=0.2)
-    plt.ylim(0.5,1,1)
+    plt.ylim(0.3,1,1)
     plt.xticks(np.arange(len(kerLen_lst)),kerLen_lst)
     plt.savefig(save_path)
     return
@@ -521,8 +522,30 @@ def run_draw_detail_CNN_kerLen(output_dir = CNN_average_AUC_dir,model_dir = expl
         draw_detail_CNN_kerLen(data_info, model_dir, output_dir)
 
 # run_preal_plot()
-# run_draw_detail_CNN_kerLen()
 
-mkdir(explain_img_dir)
-ave_visu = visu_detail_AvePreal(explain_save_root,explain_img_dir)
-ave_visu.draw_plot()
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv)<2:
+        print("please pass the parameter to specify the operation")
+        print(" Using \"ipython sorted_explain.py [parameter]\" to regenerate the result.")
+        print("Set [parameter] as \"run_preal_plot\"  to generate the theoretical score.")
+        print("Set [parameter] as \"draw_detail_CNN_kerLen\" to draw average AUCs for different kernel lengths and data sets.")
+        print("Set [parameter] as  \"visu_detail_AvePreal\" to further visualize the p_real.")
+        exit(1)
+    if sys.argv[1]=="run_preal_plot":
+        run_preal_plot()
+    elif sys.argv[1]=="draw_detail_CNN_kerLen":
+        run_draw_detail_CNN_kerLen()
+    elif sys.argv[1]== "visu_detail_AvePreal":
+        mkdir(explain_img_dir)
+        ave_visu = visu_detail_AvePreal(explain_save_root,explain_img_dir)
+        ave_visu.draw_plot()
+    else:
+        print("not supported parameters")
+        print("please pass the parameter to specify the operation")
+        print(" Using \"ipython sorted_explain.py [parameter]\" to regenerate the result.")
+        print("Set [parameter] as \"run_preal_plot\"  to generate the theoretical score.")
+        print("Set [parameter] as \"draw_detail_CNN_kerLen\" to draw average AUCs for different kernel lengths and data sets.")
+        print("Set [parameter] as  \"visu_detail_AvePreal\" to further visualize the p_real.")
+        exit(1)
