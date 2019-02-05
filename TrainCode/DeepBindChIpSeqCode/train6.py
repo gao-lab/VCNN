@@ -8,7 +8,7 @@ import random
 import pdb
 import os
 import glob
-os.environ["CUDA_VISIBLE_DEVICES"]= "0"
+os.environ["CUDA_VISIBLE_DEVICES"]= "2"
 def mkdir(path):
     isExists = os.path.exists(path)
     if not isExists:
@@ -18,37 +18,38 @@ def mkdir(path):
         return False
 
 
-def run_Simulation_data(KernelLen, KernelNum, RandomSeed):
-    def get_data_info_list(root_dir = "./Demo/*Data"):
-        #total 160 data set
-        pre = glob.glob(root_dir+"*")
-
+def run_chipseq_data(KernelLen, KernelNum, RandomSeed):
+    def get_data_info_list(root_dir = ""):
+        # 77 in total
+        pre = glob.glob(root_dir+"*Haib*")
+        for name in ["*Gm12878*","*H1hesc*","*Hepg2*","*K562*","*Helas3*","*Huvec*"]:
+            pre_tem = glob.glob(root_dir+name)
+            pre = list(set(pre) -set(pre_tem))
         ret = [it.split("/")[-1].replace("(", "/(") +"/" for it in pre]
         return ret
     cmd = "/home/lijy/anaconda2/bin/ipython ../../corecode/main.py"
     mode_lst = ["vCNN"]
-
-    data_root = "/rd2/lijy/vCNN/complexSimu/Data/Simu/"
-    result_root = "/rd2/lijy/vCNN/complexSimu/result/"
-    data_info_lst = get_data_info_list()
-
-
+    data_root = "../../Data/ChIPSeqData/HDF5/"
+    result_root = "../../OutPutAnalyse/result/ChIPSeq/"
+    data_info_lst = get_data_info_list(data_root)
+    cell = "chipseq"
     for data_info in data_info_lst:
         for mode in mode_lst:
             data_path = data_root + data_info
             tmp_cmd = str(cmd + " " + data_path + " " + result_root + " " + data_info + " "
-                          + mode + " " + KernelLen + " " + KernelNum + " " +RandomSeed)
+                          + mode + " " + KernelLen + " " + KernelNum + " " +RandomSeed + " WorseTest")
             print(tmp_cmd)
-
             os.system(tmp_cmd)
 
 
 if __name__ == '__main__':
 
-    ker_size_list = range(6, 22, 2)
-    number_of_ker_list = range(32, 129, 16)
-    randomSeedslist = [12, 1234]
+
+    ker_size_list = [24]
+    number_of_ker_list = [128]
+    randomSeedslist = [0, 23, 123, 345, 1234, 9, 2323, 927]
     for RandomSeed in randomSeedslist:
         for KernelNum in number_of_ker_list:
             for KernelLen in ker_size_list:
-                run_Simulation_data(str(KernelLen), str(KernelNum), str(RandomSeed))
+                run_chipseq_data(str(KernelLen), str(KernelNum), str(RandomSeed))
+

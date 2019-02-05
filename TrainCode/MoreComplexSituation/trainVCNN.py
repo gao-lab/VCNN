@@ -19,8 +19,8 @@ def mkdir(path):
 
 
 def run_Simulation_data(KernelLen, KernelNum, RandomSeed):
-    def get_data_info_list(root_dir = "./Demo/*Data"):
-        #total 160 data set
+    def get_data_info_list(root_dir = ""):
+        #160 in total
         pre = glob.glob(root_dir+"*")
 
         ret = [it.split("/")[-1].replace("(", "/(") +"/" for it in pre]
@@ -28,9 +28,9 @@ def run_Simulation_data(KernelLen, KernelNum, RandomSeed):
     cmd = "/home/lijy/anaconda2/bin/ipython ../../corecode/main.py"
     mode_lst = ["vCNN"]
 
-    data_root = "/rd2/lijy/vCNN/complexSimu/Data/Simu/"
-    result_root = "/rd2/lijy/vCNN/complexSimu/result/"
-    data_info_lst = get_data_info_list()
+    data_root = "../../Data/MoreComplexSituation/HDF5/"
+    result_root = "../../OutPutAnalyse/result/MoreComplexSituation/"
+    data_info_lst = get_data_info_list(data_root)
 
 
     for data_info in data_info_lst:
@@ -46,7 +46,7 @@ def run_Simulation_data(KernelLen, KernelNum, RandomSeed):
 if __name__ == '__main__':
 
     ker_size_list = range(6, 22, 2)
-    number_of_ker_list = range(32, 129, 16)
+    number_of_ker_list = range(64, 129, 32)
     randomSeedslist = [12, 1234]
     for RandomSeed in randomSeedslist:
         for KernelNum in number_of_ker_list:
