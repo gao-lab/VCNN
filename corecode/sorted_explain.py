@@ -21,7 +21,7 @@ explain_save_root = explain_root + "TheoreticalAnalysis/raw_result/"
 # save the visualized result under this dir
 explain_img_dir = explain_root + "TheoreticalAnalysis/explain_img/"
 # the dir to save motif pwm
-#
+# according to the result in NIPS manuscript, there are 2 motifs to analysis:
 # "simuMtf_Len-8_totIC-10.txt", "simuMtf_Len-23_totIC-12.txt"
 # and there are 3 data set generated from these two motifs, called [simu_01,simu_02,simu_03]
 # details about these data set refer to the manuscript

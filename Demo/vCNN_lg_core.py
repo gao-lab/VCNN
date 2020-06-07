@@ -19,45 +19,21 @@ import pickle
 import sklearn.metrics as Metrics
 import keras.backend.tensorflow_backend as KTF
 
-
+#最新版的VCNN，mask只用两个参数决定。
 """
-vCNN class
-Functions and classes used in the training process
+这里我们打算构建一种针对VCNN_lg的特殊训练模式，首先训练kernel，kernel收敛以后训练mask，mask收敛以后。kernel和mask同步训练
+于是训练部分分为三部分：
+1.训练kernel
+2.训练mask
+3.合在一起训练
+keras自带的train_able dict决定了哪些参数可以训练，但是每次新增加的trainable参数都会直接添加到最后不利于最终的输出，我们将设计函数，在每次训练后的第三部分，把参数调整
+成[kernel, bias, k_weights]和初始化的一模一样。方便以后直接构建model和load_model。
+
 """
 
 
 class VConv1D_lg(Conv1D):
-
-    '''1D Convolution layer supports changing the valid length of kernel in run time
-     This keras convolution layer supports changing the valid length of kernel by
-     using a mask to multiply the kernel. The value on the mask is based on the logistic function
-     During the training time, The mask parameter is updated by the BP algorithm using a gradient.
-     There are some parameters determine the mask as below:
-         Each mask is a  matrix, there are 2 values for each kernel. As for
-         the kernel in 1D sequence Detection, the kernel has the shape of (kernel_size,4,filters).
-         For the i-th kernel (kernel[:,:,i]) and the corresponding mask is mask[:,:,i].
-        Each kernel corresponding mask has two parameters, leftvalue and rightvalue,
-        which respectively control the position of the endpoints at both ends of the kernel.
-
-         # Argument:
-             filters: the number of kernel
-             kernel_init_len: the init length kernel's valid part. By default, the valid part of
-                 the kernel is placed in the middle of the kernel.
-             kernel_max_len: the max length of the kernel (including the valid and invalid part).
-                 By default is 50
-             verbose: a bool, if the message will be printed in the concole. The messages including:
-                 the masks' states and lengths.
-             "padding": is set to "same", because VCNN have invalid part of kernel, where the value is zero.
-                 In order to prevent the edge of each sequence be ignored.
-             "dataformat": is set to "channels_last" for the convenience of implementation
-                 (this can be changed in future version)
-             "kernel_initializer": is set to "RandomUniform", in order to calculated the IC threshold's
-                 initial distribution. Also unnecessary limitation just for the convenience of implementation
-             other parameters are chosen only for the implementation convenience. Can be changed in future version
-             "average_IC_update": a bool variable, using average IC as threshold when updating mask edges
-         # Reference:
-             The algorithm is described in doc: {to fix!}
-     '''
+    """docstring for VConv1D"""
 
     def __init__(self, filters,
                  kernel_size,
@@ -139,26 +115,20 @@ class VConv1D_lg(Conv1D):
         self.built = True
 
     def init_left(self):
-        """
-        Used to generate a leftmask
-        :return:
-        """
         K.set_floatx('float32')
-        k_weights_tem_2d_left = K.arange(self.kernel.shape[0])  # shape[0] is the length
+        self.k_weights[0, :, :] = K.cast(int(self.KernelSize - self.KernelSize/4), dtype='float32')
+        k_weights_tem_2d_left = K.arange(self.kernel.shape[0])  # shape[0]是长度
         k_weights_tem_2d_left = tf.expand_dims(k_weights_tem_2d_left, 1)
         k_weights_tem_3d_left = K.cast(K.repeat_elements(k_weights_tem_2d_left, self.kernel.shape[2], axis=1),
-                                       dtype='float32') - self.k_weights[0, :, :]  # shape[2] is the number
+                                       dtype='float32') - self.k_weights[0, :, :]  # shape[2]是numbers
         self.k_weights_3d_left = tf.expand_dims(k_weights_tem_3d_left, 1)
 
     def init_right(self):
-        """
-        Used to generate a rightmask
-        :return:
-        """
-        k_weights_tem_2d_right = K.arange(self.kernel.shape[0])  # shape[0] is the length
+        self.k_weights[0, :, :] = K.cast(int(self.KernelSize + self.KernelSize/4), dtype='float32')
+        k_weights_tem_2d_right = K.arange(self.kernel.shape[0])  # shape[0]是长度
         k_weights_tem_2d_right = tf.expand_dims(k_weights_tem_2d_right, 1)
         k_weights_tem_3d_right = -(K.cast(K.repeat_elements(k_weights_tem_2d_right, self.kernel.shape[2], axis=1),
-                                          dtype='float32') - self.k_weights[1, :, :])  # shape[2] is the number
+                                          dtype='float32') - self.k_weights[1, :, :])  # shape[2]是numbers
         self.k_weights_3d_right = tf.expand_dims(k_weights_tem_3d_right, 1)
 
     def regularzeMask(self, maskshape, slip):
@@ -176,6 +146,7 @@ class VConv1D_lg(Conv1D):
 
     def call(self, inputs):
         if self.rank == 1:
+            # 生成和以前初值shape一样的mask_tem，。
             self.init_left()
             self.init_right()
             k_weights_left = K.sigmoid(self.k_weights_3d_left)
@@ -211,31 +182,34 @@ class TrainMethod(keras.callbacks.Callback):
     mask and kernel train crossover
     """
     def on_epoch_begin(self, epoch, logs={}):
+        oddTrain = [self.model.layers[0].k_weights, self.model.layers[0].bias]
+        odd_non_Train = [self.model.layers[0].kernel]
 
         evenTrain = [self.model.layers[0].kernel, self.model.layers[0].bias]
         even_non_Train = [self.model.layers[0].k_weights]
-        AllTrain = [self.model.layers[0].kernel, self.model.layers[0].bias, self.model.layers[0].k_weights]
+        AllTrain = [self.model.layers[0].kernel, self.model.layers[0].k_weights, self.model.layers[0].bias]
         All_non_Train = []
-        if epoch <= 10:
+        K.set_value(self.model.layers[0].LossKernel, K.get_value(self.model.layers[0].kernel))
+        if epoch <= 5:
             self.model.layers[0].trainable_weights = evenTrain
             self.model.layers[0].non_trainable_weights = even_non_Train
         else:
             self.model.layers[0].trainable_weights = AllTrain
             self.model.layers[0].non_trainable_weights = All_non_Train
 
-
-def ShanoyLoss(KernelWeights, MaskWeight, mu):
+def ShanoyAveLoss(KernelWeights, MaskWeight, mu, Val=K.cast(0.1, dtype='float32')):
     """
-    Constructing a loss function with Shannon entropy
-    :param KernelWeights: kernel parameters in the model
-    :param MaskWeight: mask parameters in the model
-    :param mu:  coefficient for Shannon loss
+    构建具有香农熵的损失函数
+    :param KernelWeights:
+    :param MaskWeight:
+    :param mu:
+    :param Val:
     :return:
     """
 
     def DingYTransForm(KernelWeights):
         """
-        Generate PWM
+        根据丁阳的算法生成PWM
         :param KernelWeights:
         :return:
         """
@@ -248,7 +222,8 @@ def ShanoyLoss(KernelWeights, MaskWeight, mu):
 
     def CalShanoyE(PWM):
         """
-        Calculating the Shannon Entropy of PWM
+        计算PWM的香农熵
+
         :param PWM:
         :return:
         """
@@ -261,16 +236,64 @@ def ShanoyLoss(KernelWeights, MaskWeight, mu):
         return ShanoyE, ShanoyMeanRes
 
     def lossFunction(y_true,y_pred):
-        """
-        Output loss function
-        :param y_true:
-        :param y_pred:
-        :return:
-        """
 
         loss = keras.losses.binary_crossentropy(y_true, y_pred)
         PWM = DingYTransForm(KernelWeights)
         ShanoyE,ShanoyMeanRes = CalShanoyE(PWM)
+        # 越往两边贡献越小
+        MaskValue = K.cast(0.25, dtype='float32') - (MaskWeight - K.cast(0.5, dtype='float32')) * (MaskWeight - K.cast(0.5, dtype='float32'))
+        ShanoylossValue= K.sum((ShanoyE * MaskValue - K.cast(0.25, dtype='float32') * ShanoyMeanRes)
+                               * (ShanoyE * MaskValue - K.cast(0.25, dtype='float32') * ShanoyMeanRes)
+                               )
+        loss += mu * ShanoylossValue
+        return loss
+
+    return lossFunction
+
+def ShanoyLoss(KernelWeights, MaskWeight, mu, Val=K.cast(0.1, dtype='float32')):
+    """
+    构建具有香农熵的损失函数
+    :param KernelWeights:
+    :param MaskWeight:
+    :param mu:
+    :param Val:
+    :return:
+    """
+
+    def DingYTransForm(KernelWeights):
+        """
+        根据丁阳的算法生成PWM
+        :param KernelWeights:
+        :return:
+        """
+        ExpArrayT = K.exp(KernelWeights * K.log(K.cast(2, dtype='float32')))
+        ExpArray = K.sum(ExpArrayT, axis=1, keepdims=True)
+        ExpTensor = K.repeat_elements(ExpArray, 4, axis=1)
+        PWM = tf.divide(ExpArrayT, ExpTensor)
+
+        return PWM
+
+    def CalShanoyE(PWM):
+        """
+        计算PWM的香农熵
+
+        :param PWM:
+        :return:
+        """
+        Shanoylog = -K.log(PWM) / K.log(K.cast(2, dtype='float32'))
+        ShanoyE = K.sum(Shanoylog * PWM, axis=1, keepdims=True)
+        # 计算均值和两倍标准差
+        ShanoyMean = tf.divide(K.sum(ShanoyE, axis=0, keepdims=True), K.cast(ShanoyE.shape[0], dtype='float32'))
+        ShanoyMeanRes = K.repeat_elements(ShanoyMean, ShanoyE.shape[0], axis=0)
+
+        return ShanoyE, ShanoyMeanRes
+
+    def lossFunction(y_true,y_pred):
+
+        loss = keras.losses.binary_crossentropy(y_true, y_pred)
+        PWM = DingYTransForm(KernelWeights)
+        ShanoyE,ShanoyMeanRes = CalShanoyE(PWM)
+        # 越往两边贡献越小
         MaskValue = K.cast(0.25, dtype='float32') - (MaskWeight - K.cast(0.5, dtype='float32')) * (MaskWeight - K.cast(0.5, dtype='float32'))
         ShanoylossValue= K.sum((ShanoyE * MaskValue - K.cast(0.3, dtype='float32'))
                                * (ShanoyE * MaskValue - K.cast(0.3, dtype='float32'))
@@ -318,19 +341,19 @@ def get_kernel(model):
 
 def init_mask_final(model, init_len_dict, KernelLen):
     """
-    Initialize the mask parameter
+
     :param model:
-    :param init_len:The length of the initialization corresponds to the number of dict format, the corresponding length and the number of corresponding lengths
+    :param init_len:初始化的长度对应的数目dict格式，对应长度以及对应长度的数量
     :return:
     """
     param =model.layers[0].get_weights()
     k_weights_shape = param[1].shape
     k_weights = np.zeros(k_weights_shape)
     init_len_list = init_len_dict.keys()
-    index_start = 0
+    index_start = 0#记录起始点
     for init_len in init_len_list:
         init_num = init_len_dict[init_len]
-        init_len = int(init_len)
+        init_len = int(init_len) + 4
         init_part_left = np.zeros([1, k_weights_shape[1], init_num]) + (KernelLen - init_len) / 2
         init_part_right = np.zeros((1, k_weights_shape[1], init_num))+ (KernelLen + init_len)/2
         k_weights[0,:,index_start:(index_start+init_num)] = init_part_left

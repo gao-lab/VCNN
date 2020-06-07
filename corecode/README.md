@@ -1,6 +1,6 @@
 # Source code guideline
 
-Download the dataset from "". Uncompress the "simu_data.tar.gz". There are 3 simulation data directory in the Archive.They are "MoreComplexSituation","SimulationOnTwoMotif","ICSimulation".
+Download the dataset from "ftp://ftp.cbi.pku.edu.cn/pub/supplementary_file/VCNNlg/". Uncompress the "Data.tar.gz" in the home dir and uncompress the "result.tar.gz" in "./OutPutAnalyse". 
 
 put the data directory at the "./Data" to set up simulation dataset.
 

@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 '''
-vCNN_lg_core
-three functions
-build_CNN_model()
+vCNN_lg_core的结果
+提供三个函数：
 train_CNN(...)
 train_vCNN(...)
 '''
@@ -55,24 +54,29 @@ def build_CNN_model(model_template, number_of_kernel, kernel_size,
 def train_CNN(input_shape,modelsave_output_prefix,data_set, number_of_kernel, kernel_size,
              random_seed, batch_size, epoch_scheme):
     '''
-    Complete CNN training for a specified data set
-    :param input_shape:   Sequence shape
+    完成一个指定数据集的CNN训练
+    :param input_shape:
+                                    序列的shape
     :param modelsave_output_prefix:
-                                    the path of the model to be saved, the results of all models are saved under the path.The saved information is:：
-                                    lThe model parameter with the smallest loss: ：*.checkpointer.hdf5
-                                     Historical auc and loss：Report*.pkl
+                                    保存模型的路径，所有模型的结果，都保存在该路径下.保存的信息有：
+                                    loss最小的模型参数：*.checkpointer.hdf5
+                                    历史的auc和loss：Report*.pkl
     :param data_set:
-                                    data[[training_x,training_y],[test_x,test_y]]
+                                    数据集 [[training_x,training_y],[test_x,test_y]]
     :param number_of_kernel:
-                                    kernel numbers
+                                    kernel的个数
     :param kernel_size:
-                                    kernel size
+                                    kernel的大小
     :param random_seed:
-                                    random seed
+                                    随机种子的数值
     :param batch_size:
-                                    batch size
-    :param epoch_scheme:           training epochs
-    :return:                       model auc and model name which contains hpyer-parameters
+                                    batch的大小
+    :param epoch_scheme:
+                                    训练的策略，一个list,每个元素是一次fit的epoch数，每次load一次最优参数
+    :return:
+                                    test set的auc，以及模型保存的位置的“模板”：[test_auc,modelsave_output_filename]
+                                    replace(".hdf5", ".checkpointer.hdf5") 得到模型参数
+                                    replace("/model_KernelNum-","/Report_KernelNum-") 得到保存的auc，loss的dict
 
 
     '''

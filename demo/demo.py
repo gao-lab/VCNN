@@ -17,15 +17,16 @@ def mkdir(path):
     else:
         return False
 
+# idx 模 part_mode == part_num 时候，训练该数据集
 
 def run_Simulation_data(KernelLen, KernelNum, RandomSeed):
     def get_data_info_list(root_dir = "./Demo/*Data"):
-        #total 160 data set
+        #总共160个
         pre = glob.glob(root_dir+"*")
 
         ret = [it.split("/")[-1].replace("(", "/(") +"/" for it in pre]
         return ret
-    cmd = "/home/lijy/anaconda2/bin/ipython ../../corecode/main.py"
+    cmd = "python ../../corecode/main.py"
     mode_lst = ["vCNN"]
 
     data_root = "/rd2/lijy/vCNN/complexSimu/Data/Simu/"

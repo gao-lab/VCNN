@@ -25,7 +25,7 @@ def run_Simulation_data(KernelLen, KernelNum, RandomSeed):
 
         ret = [it.split("/")[-1].replace("(", "/(") +"/" for it in pre]
         return ret
-    cmd = "/home/lijy/anaconda2/bin/ipython ../../corecode/main.py"
+    cmd = "python ../../corecode/main.py"
     mode_lst = ["CNN"]
 
     data_root = "../../Data/ICSimulation/HDF5/"

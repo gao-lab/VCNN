@@ -23,12 +23,12 @@ os.environ["CUDA_VISIBLE_DEVICES"]= "0"
 def get_real_data_info(data_root_path):
     return [it.split("/")[-1]+"/" for it in glob.glob(data_root_path+"*")]
 
-# get data_info of IC simulation  data set :
+# 获得chipseq数据集的data_info: 数据和结果的目录结果同上
 def get_chipseq_data_info(data_root_path):
     return [it.split("/")[-1]+"/" for it in glob.glob(data_root_path+"*")]
 
-# record (auc and loss)
-# save the history by np.array
+# 记录record (auc和loss)时候，每次fit model 的结果都是一个子列表
+# 调用这个函数，将结果展平，返回np.array
 def flat_record(rec):
     try:
         output = np.array([x for y in rec for x in y])
@@ -37,11 +37,12 @@ def flat_record(rec):
     return output
 
 
+# Traversing the path of the deepbind data set, each time calling func
 # func set 3 parameter：data_root,result_root,data_info
 # func return the result as a value, data_info, as a key, return a dictionary
 def iter_real_path(func,data_root, result_root):
     '''
-    Traversing the simulation data set,
+    Traversing the simu data set,
     :param func:
     :param data_root: The root directory where the data is located
     :param result_root: The root directory where the result is located
@@ -232,7 +233,7 @@ def DrawBox(dataName, path):
         sns.boxplot(data=Pddict)
         plt.ylim(0.5,1)
         plt.ylabel("AUC")
-        plt.xlabel(dataInfo+" Data")  # set label
+        plt.xlabel(dataInfo+" Data")  # 我们设置横纵坐标的标题。
         # Pddict.boxplot()
         plt.savefig(filename.replace("txt","eps"), format="eps")
         plt.savefig(filename.replace("txt","png"))
@@ -241,11 +242,11 @@ def DrawBox(dataName, path):
 
 
 if __name__ == '__main__':
-    # auc of all models in the hyper parameter space，prove the robust
+    # 分析模型各个超参数的auc，检查模型对超参数的鲁棒性
     SimulationDataRoot = "../../Data/ICSimulation/HDF5/"
     SimulationResultRoot = "../../OutPutAnalyse/result/ICSimulation/"
 
-    # #################the best model and save the result################
+    # #################分析模型最优的AUC并保存################
     model_lst = ["vCNN", "CNN"]
     for item in model_lst:
         aucouttem={}

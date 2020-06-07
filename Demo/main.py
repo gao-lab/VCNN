@@ -85,7 +85,7 @@ if __name__ == "__main__":
     batch_size = 100
 
 
-    # model type
+    # 确定模型的类型
     if mode == "CNN":
         print("training CNN")
         time.sleep(2)

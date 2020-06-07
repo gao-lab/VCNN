@@ -1,0 +1,7 @@
+运行./CNNB , ./vCNNB里面的train脚本，生成CNNB和vCNNB的结果
+运行MLtools里面的generateonsc脚本生成经典机器学习算法的结果
+
+使用MLtools里面的fileIntoCisfinderFormat.py生成各个模型结果的cisfinder格式的文件
+使用GeneRateCisFInderScan.py生成cisfinder运行脚本，得到peak文件
+然后使用analysis里面的compare脚本进行比较，最后使用analysis里的picoutput.py脚本进行绘图。
+

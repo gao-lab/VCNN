@@ -10,7 +10,7 @@ import time
 import math
 import pickle
 import pdb
-from scipy.stats import wilcoxon
+from scipy.stats import wilcoxon, ranksums
 os.environ["CUDA_VISIBLE_DEVICES"]= "2"
 # from build_models import *
 # import keras
@@ -19,6 +19,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]= "2"
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
 import seaborn as sns
+import scipy.stats as stats
 
 # Get the data_info of the deepbind data set:
 # the directory result of the data and result is the same as above
@@ -51,6 +52,39 @@ def iter_real_path(func,data_root, result_root):
 	return ret
 
 
+def filelist(path):
+	"""
+	Generate file names in order
+	:param path:
+	:return:
+	"""
+
+	randomSeedslist = [0, 23, 123, 345, 1234, 9, 2323, 927]
+
+	ker_size_list = [10, 17, 24]
+	# ker_size_list = [24]
+	number_of_ker_list = [96, 128]
+	# number_of_ker_list = [128]
+
+	name = path.split("/")[-2]
+	rec_lst = []
+
+	for KernelNum in number_of_ker_list:
+		for KernelLen in ker_size_list:
+			for random_seed in randomSeedslist:
+				if name == "vCNN":
+					filename = path + "/Report_KernelNum-" + str(KernelNum) + "_initKernelLen-" + str(
+						KernelLen) + "_maxKernelLen-40_seed-" + str(random_seed) \
+							   + "_batch_size-100.pkl"
+				else:
+					filename = path + "/Report_KernelNum-" + str(KernelNum) + "_KernelLen-" + str(
+						KernelLen) + "_seed-" + str(random_seed) + "_batch_size-100.pkl"
+
+				rec_lst.append(filename)
+
+	return rec_lst
+
+
 # reuturn the best auc
 
 def gen_auc_report(data_info,result_root,data_root):
@@ -63,27 +97,38 @@ def gen_auc_report(data_info,result_root,data_root):
 
 	def get_reports(path,datatype):
 		aucs = []
-		rec_lst = glob.glob(path+"Report*")
-
+		# rec_lst = glob.glob(path+"Report*")
+		rec_lst = filelist(path)
+		num = 0
 		for rec in rec_lst:
+
+			if not os.path.exists(rec):
+
+				continue
 			with open(rec,"r") as f:
 				tmp_dir = (pickle.load(f)).tolist()
-				aucs.append(flat_record(tmp_dir["auc"]).max())
+				# aucs.append(flat_record(tmp_dir["auc"]).max())
 				global aucouttem, DatatypeAUC
 				name = extractUseInfo(rec)
 
 				keylist = aucouttem.keys()
-				if name[-2:] == "24":
-					if datatype not in DatatypeAUC.keys():
-						DatatypeAUC[datatype] = tmp_dir["test_auc"]
-					elif DatatypeAUC[datatype] < tmp_dir["test_auc"]:
-						DatatypeAUC[datatype] = tmp_dir["test_auc"]
+				# if name[-2:] == "24":
+				num = num + 1
+				aucs.append(tmp_dir["test_auc"])
+
+				if datatype not in DatatypeAUC.keys():
+					DatatypeAUC[datatype] = tmp_dir["test_auc"]
+				elif DatatypeAUC[datatype] < tmp_dir["test_auc"]:
+					DatatypeAUC[datatype] = tmp_dir["test_auc"]
 
 				if name in keylist:
 					aucouttem[name].append(tmp_dir["test_auc"])
 				else:
 					aucouttem[name]=[]
 					aucouttem[name].append(tmp_dir["test_auc"])
+		if num != 8:
+			print(datatype,": ", num)
+		# DatatypeAUC[datatype] = np.median(aucs)
 		return aucs
 
 	def extractUseInfo(name):
@@ -245,8 +290,8 @@ def DrawAUC(AUCAixs, AUCdict, statistic_root, ComparedName,data_root="../../Data
 	fig, ax = plt.subplots()
 	binwidth = abs(min(WorseDistribute))/4
 	N, bins, patches = ax.hist(WorseDistribute,bins=np.arange(min(WorseDistribute),
-	                                       max(WorseDistribute) + binwidth, binwidth),
-	                           edgecolor='white', linewidth=1)
+										   max(WorseDistribute) + binwidth, binwidth),
+							   edgecolor='white', linewidth=1)
 	for i in range(0, 4):
 		patches[i].set_facecolor('gray')
 	for i in range(4, len(patches)-1):
@@ -360,7 +405,7 @@ def DrawAUC(AUCAixs, AUCdict, statistic_root, ComparedName,data_root="../../Data
 
 
 ######################################################################
-def CompareModels(comparedResult, vCNNAUC):
+def CompareModels(comparedResult, vCNNAUC, type="DeepBind"):
 	"""
 	compared the input model and vCNNmodel
 	:param comparedResult:
@@ -392,7 +437,7 @@ def CompareModels(comparedResult, vCNNAUC):
 				better_number = better_number + 1
 			if vCNNAUC[key] - comparedResult[key] > 0.02:
 				SignificantBetterNum = SignificantBetterNum + 1
-			if comparedResult[key] - vCNNAUC[key] > 0.02:
+			if comparedResult[key] - vCNNAUC[key] > 0.00:
 				bigAxis.append(comparedResult[key] - vCNNAUC[key])
 		except:
 			pass
@@ -403,37 +448,246 @@ def CompareModels(comparedResult, vCNNAUC):
 		print("bigAxis:", np.mean(bigAxis))
 		print("bigAxismax:", np.max(bigAxis))
 		print("bigAxishape:",len(bigAxis))
-	stat, p = wilcoxon(vCNNAUClist, comparedResultlist)
+	stat, p = ranksums(vCNNAUClist, comparedResultlist)
 	print("stat:%f", stat)
 	print("p-value:" ,p)
+	print("MeanVCNN: ", np.mean(vCNNAUClist))
+	print(type+": ", np.mean(comparedResultlist))
+	return AUC, AUCAixs, WorseKeylist, comparedResultlist
 
-	return AUC, AUCAixs, WorseKeylist
+def DrawCompareResult(Keys, vCNNData, CNNData,ComparedNamelist,statistic_root,name):
+	"""
+
+	:param Keys:
+	:return:
+	"""
+	CNN = []
+	vCNN = []
+
+	DictDraw = {ComparedNamelist[0]:[], ComparedNamelist[1]:[]}
+
+	for key in Keys:
+		CNN.append(CNNData[key])
+		vCNN.append(vCNNData[key])
+		DictDraw[ComparedNamelist[1]].append(CNNData[key])
+		DictDraw[ComparedNamelist[0]].append(vCNNData[key])
+
+	mkdir(statistic_root)
+
+	# sns.set_style("darkgrid")
+
+	plt.plot([0.5,1],[0.5,1], color='black')
+	plt.xlabel("AUC for "+ name)
+	plt.ylabel("AUC for vCNN-based models")
+
+	plt.title("AUC Compared")
+	plt.scatter(CNN, vCNN, s=10, color="blue")
+	plt.tight_layout()
+	plt.savefig(statistic_root + "/" + ComparedNamelist[1]+"Scatter.eps", format="eps")
+	plt.savefig(statistic_root + "/" + ComparedNamelist[1] +"Scatter.png")
+	plt.close()
+
+	##### barplot
+	DictDrawData = pd.DataFrame(DictDraw)
+	# sns.set_style("darkgrid")
+	pvalue = stats.mannwhitneyu(DictDraw[ComparedNamelist[1]], DictDraw[ComparedNamelist[0]], alternative="less")[1]
+
+	plt.title("P-value: " + format(pvalue, ".2e"), fontsize=20)
+	plt.ylabel("AUC", fontsize=20)
+	plt.ylim([0.5, 1])
+	sns.barplot(data=DictDrawData, capsize=.2, color="w")
+
+	plt.tight_layout()
+
+	plt.savefig(statistic_root + "/" + ComparedNamelist[1]+"Barplot.eps", format="eps")
+	plt.savefig(statistic_root + "/" + ComparedNamelist[1] +"Barplot.png")
+	plt.close()
+
+	
+def WriteWorseKey(filepath, data):
+	"""
+	
+	:param filepath:
+	:param data:
+	:return:
+	"""
+
+	file = open(filepath, 'w')
+	for key in data:
+		file.write(str(key))
+		file.write('\n')
+	file.close()
+	
+def GetDataSize(path):
+	"""
+	:param path:
+	:return:
+	"""
+	
+	datalist = glob.glob(path+"/*")
+	dataNumdict = {}
+	dataNumlist = []
+
+	for data in datalist:
+		f= h5py.File(data+"/train.hdf5")
+		Name = data.split("/")[-1]
+		num = f["sequences"].shape[0]
+		dataNumdict[Name] = num
+		dataNumlist.append(num)
+		f.close()
+		
+	return dataNumdict, dataNumlist
+
+
+def StaWorseKey(WorseKey,dataNumdict,dataNumlist, statisticRoot):
+	"""
+
+	:param WorseKey:
+	:param dataNumdict:
+	:param dataNumlist:
+	:param statisticRoot:
+	:return:
+	"""
+	WorseKeySize = []
+	for key in WorseKey:
+		WorseKeySize.append(dataNumdict[key])
+	outputRoot = statisticRoot+"/worseData/"
+	mkdir(outputRoot)
+	MaxDataSize = np.max(dataNumlist)
+	
+	sns.set(color_codes=True)
+	plt.ylabel("Count of datasets")
+	plt.xlabel("Data size")
+	plt.xlim(0, MaxDataSize)
+	sns.distplot(dataNumlist, bins=40, kde=False)
+	plt.savefig(outputRoot +"/" + "DataSize.eps", format="eps")
+	plt.savefig(outputRoot + "/" + "DataSize.png")
+	plt.close()
+	
+	sns.set(color_codes=True)
+	plt.ylabel("Count of datasets")
+	plt.xlabel("Data size")
+	plt.xlim(0, MaxDataSize)
+	sns.distplot(WorseKeySize, bins=40, kde=False)
+	plt.savefig(outputRoot + "/" + "DataSizeWorseCase.eps", format="eps")
+	plt.savefig(outputRoot + "/" + "DataSizeWorseCase.png")
+	plt.close()
+
+	print("datasize Compare: ",prob_smaller(WorseKeySize, dataNumlist))
+
+
+
+def SmallSizeDataAnalyse(dataNumdict, DatatypeAUC, CNNResult, OutputPath):
+	"""
+
+	:param dataNumdict:
+	:param DatatypeAUC:
+	:param CNNResult:
+	:param OutputPath:
+	:return:
+	"""
+	VCNNauclist = []
+	CNNauclist = []
+	dataSizelist = []
+	Namelist = []
+	for name in dataNumdict:
+		if dataNumdict[name]<500:
+			VCNNauclist.append(DatatypeAUC[name])
+			CNNauclist.append(CNNResult[name])
+			dataSizelist.append(dataNumdict[name])
+			Namelist.append(name)
+	WriteWorseKey("../../TrainCode/ChIpSeqLess500/WorseKeyCNN.txt", Namelist)
+	dataSizelist = np.asarray(dataSizelist)/50
+	plt.plot([0.5,1],[0.5,1], color='black')
+	plt.xlabel("CNN1layers128motifs AUC")
+	plt.ylabel("VCNN  AUC")
+	plt.title("AUC Compared")
+	plt.scatter(CNNauclist, VCNNauclist, s=dataSizelist, color="blue")
+	plt.savefig(OutputPath +"/worseData/SmallSizevCNNCNN.eps", format="eps")
+	plt.savefig(OutputPath + "/worseData//SmallSizevCNNCNNWorseCase.png")
+	plt.close()
+
+def get_Worsedata_info():
+	Outputlist = []
+	file = open('../../TrainCode/ChIpSeqworseData/WorseKeyCNN.txt', 'r')
+	data_list = file.readlines()
+	for line in data_list:
+		data_info = line.replace("\n", "")
+		Outputlist.append(data_info)
+	return Outputlist
+
+def prob_smaller(a,b):
+	L = len(b)*1.
+	lst = []
+	for it_a in a:
+		lst.append(len([it_b for it_b in b if it_a<it_b])/L)
+
+	return np.array(lst).mean()
 
 if __name__ == '__main__':
 	# data path and result path.
 	import pandas as pd
 	deepbind_data_root = "../../Data/ChIPSeqData/HDF5/"
-	deepbind_result_root = "../../OutPutAnalyse/result/ChIPSeq/"
+	result_root = "../../OutPutAnalyse/result/ChIPSeq/"
+	# result_root = "/rd2/lijy/KDD/oldResult/result/ChIPSeq//"
+
 	statisticRoot = "../../OutPutAnalyse/ModelAUC/ChIPSeq/"
 
 	mkdir(statisticRoot)
-	################################ AUC ###########################################
+	################################AUC处理###########################################
 
 	aucouttem={}
 	DatatypeAUC = {}
-	r = iter_real_path(gen_auc_report, data_root=deepbind_data_root, result_root=deepbind_result_root)
+	r = iter_real_path(gen_auc_report, data_root=deepbind_data_root, result_root=result_root)
 
 	# compared with deepbind
 	deepbindResult = GetDeepbindResult()
 
-	AUC, AUCAixs, WorseKeyDB = CompareModels(deepbindResult, DatatypeAUC)
+	AUC, AUCAixs, WorseKeyDB, DeepBindlist = CompareModels(deepbindResult, DatatypeAUC,"deepbind")
 
-	DrawAUC(AUCAixs, AUC, statisticRoot, "DeepBind")
-
+	print("DeepBind finished")
 	# Compared with CNN
 	CNNResult = GetCNNResult()
 
-	AUC, AUCAixs, WorseKeyCNN = CompareModels(CNNResult, DatatypeAUC)
+	AUC, AUCAixs, WorseKeyCNN, CNNlist = CompareModels(CNNResult, DatatypeAUC,"CNN")
+
+	print("DeepBind finished")
+
+	### all pic
+
+	DrawCompareResult(DatatypeAUC.keys(), DatatypeAUC, CNNResult,
+					 ["vCNN","CNN1layers128motifs"],statisticRoot+"/Pic","CNN-based model from Zeng, et al., 2016")
+
+	DrawCompareResult(DatatypeAUC.keys(), DatatypeAUC, deepbindResult,
+					 ["vCNN","DeepBind"],statisticRoot+"/Pic","DeepBind models")
 
 
-	DrawAUC(AUCAixs, AUC, statisticRoot, "CNN1layers128motifs")
+
+	# Worse Analysis
+
+	# WorseKeyCNN = get_Worsedata_info()
+	DrawCompareResult(WorseKeyCNN, DatatypeAUC, CNNResult,
+					 ["vCNN", "CNN1layers128motifs"],statisticRoot+"/Pic/WorseCNN/", "CNN-based model from Zeng, et al., 2016")
+
+	# DrawCompareResult(WorseKeyDB, deepbindResult, CNNResult,
+	# 				 ["DeepBind","CNN1layers128motifs"],statisticRoot+"/Pic/WorseDeepBind/")
+
+
+
+
+
+
+	Worselist = list(set(WorseKeyDB).union(set(WorseKeyCNN)))
+	
+	WriteWorseKey("../../TrainCode/ChIpSeqworseData/WorseKey.txt", Worselist)
+	WriteWorseKey("../../TrainCode/ChIpSeqworseData/WorseKeyCNN.txt", WorseKeyCNN)
+
+
+	stat, p = ranksums(CNNlist, DeepBindlist)
+	print("DeepBind CNN", p)
+	
+	#########staWroseKey######
+	
+	dataNumdict, dataNumlist = GetDataSize(deepbind_data_root)
+	StaWorseKey(WorseKeyCNN, dataNumdict, dataNumlist, statisticRoot+"/Pic/")
+	SmallSizeDataAnalyse(dataNumdict, DatatypeAUC, CNNResult, statisticRoot+"/Pic/")

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import keras
 from sklearn.metrics import roc_auc_score
+# 资源来自： https://github.com/keunwoochoi/keras_callbacks_example/blob/master/my_callbacks.py
 class Histories(keras.callbacks.Callback):
 	def __init__(self, data=()):
 		super(keras.callbacks.Callback, self).__init__()

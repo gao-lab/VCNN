@@ -144,10 +144,10 @@ class VConv1D_lg(Conv1D):
         :return:
         """
         K.set_floatx('float32')
-        k_weights_tem_2d_left = K.arange(self.kernel.shape[0])  # shape[0] is the length
+        k_weights_tem_2d_left = K.arange(self.kernel.shape[0])  # shape[0]是长度
         k_weights_tem_2d_left = tf.expand_dims(k_weights_tem_2d_left, 1)
         k_weights_tem_3d_left = K.cast(K.repeat_elements(k_weights_tem_2d_left, self.kernel.shape[2], axis=1),
-                                       dtype='float32') - self.k_weights[0, :, :]  # shape[2] is the number
+                                       dtype='float32') - self.k_weights[0, :, :]  # shape[2]是numbers
         self.k_weights_3d_left = tf.expand_dims(k_weights_tem_3d_left, 1)
 
     def init_right(self):
@@ -155,10 +155,10 @@ class VConv1D_lg(Conv1D):
         Used to generate a rightmask
         :return:
         """
-        k_weights_tem_2d_right = K.arange(self.kernel.shape[0])  # shape[0] is the length
+        k_weights_tem_2d_right = K.arange(self.kernel.shape[0])  # shape[0]是长度
         k_weights_tem_2d_right = tf.expand_dims(k_weights_tem_2d_right, 1)
         k_weights_tem_3d_right = -(K.cast(K.repeat_elements(k_weights_tem_2d_right, self.kernel.shape[2], axis=1),
-                                          dtype='float32') - self.k_weights[1, :, :])  # shape[2] is the number
+                                          dtype='float32') - self.k_weights[1, :, :])  # shape[2]是numbers
         self.k_weights_3d_right = tf.expand_dims(k_weights_tem_3d_right, 1)
 
     def regularzeMask(self, maskshape, slip):
@@ -175,8 +175,8 @@ class VConv1D_lg(Conv1D):
 
 
     def call(self, inputs):
-
         if self.rank == 1:
+            # generate the same shape as mask_tem，。
             self.init_left()
             self.init_right()
             k_weights_left = K.sigmoid(self.k_weights_3d_left)
@@ -294,6 +294,8 @@ class KMaxPooling(Layer):
 
     def call(self,x):
         k = K.cast(self.K, dtype="int32")
+        #sorted_tensor = K.sort(x, axis=1)
+        #output = sorted_tensor[:, -k:, :]
         if self.mode == 0:
           output = tensorflow.nn.top_k(tensorflow.transpose(x,[0,2,1]), k)
         elif self.mode ==1:
