@@ -18,6 +18,7 @@ from keras.layers.convolutional import *
 import pickle
 import sklearn.metrics as Metrics
 import keras.backend.tensorflow_backend as KTF
+
 import copy
 
 """
@@ -207,6 +208,7 @@ class VConv1D_lg(Conv1D):
         config.pop('data_format')
         return config
 
+
 class TrainMethod(keras.callbacks.Callback):
     """
     mask and kernel train crossover
@@ -228,6 +230,7 @@ class TrainMethod(keras.callbacks.Callback):
         Assignment kernel
         """
         self.model.layers[0].LossKernel = copy.deepcopy(self.model.layers[0].kernel)
+
 
 
 def ShanoyLoss(KernelWeights, MaskWeight, mu):
@@ -322,28 +325,26 @@ def get_kernel(model):
     param = model.layers[0].get_weights()
     return param[0]
 
-def init_mask_final(model, init_len_dict, KernelLen):
+def init_mask_final(model,layerlist, Initlenlist, KernelLen):
     """
     Initialize the mask parameter
     :param model:
     :param init_len:The length of the initialization corresponds to the number of dict format, the corresponding length and the number of corresponding lengths
     :return:
     """
-    param =model.layers[0].get_weights()
-    k_weights_shape = param[1].shape
-    k_weights = np.zeros(k_weights_shape)
-    init_len_list = init_len_dict.keys()
-    index_start = 0
-    for init_len in init_len_list:
-        init_num = init_len_dict[init_len]
-        init_len = int(init_len)
+    for i in layerlist:
+
+        param =model.layers[i].get_weights()
+        k_weights_shape = param[1].shape
+        k_weights = np.zeros(k_weights_shape)
+        init_len = int(Initlenlist[i])
+        init_num = k_weights_shape[2]
         init_part_left = np.zeros([1, k_weights_shape[1], init_num]) + (KernelLen - init_len) / 2
         init_part_right = np.zeros((1, k_weights_shape[1], init_num))+ (KernelLen + init_len)/2
-        k_weights[0,:,index_start:(index_start+init_num)] = init_part_left
-        k_weights[1,:,index_start:(index_start+init_num)] = init_part_right
-        index_start = index_start + init_num
-    param[1] = k_weights
-    model.set_weights(param)
+        k_weights[0,:,:] = init_part_left
+        k_weights[1,:,:] = init_part_right
+        param[1] = k_weights
+        model.set_weights(param)
     return model
 
 def load_kernel_mask(model_path, conv_layer=None):

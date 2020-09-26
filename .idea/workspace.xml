@@ -1,255 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac313fbf-2e32-4ee2-869c-c8ea3c709e3b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Data/ICSimulation/RealMotif/simu_01/simuMtf_Len-8_totIC-10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ICSimulation/RealMotif/simu_01/simuMtf_Len-8_totIC-10.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ICSimulation/RealMotif/simu_01/simu_01 - 快捷方式.lnk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ICSimulation/RealMotif/simu_02/simuMtf_Len-23_totIC-12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ICSimulation/RealMotif/simu_02/simuMtf_Len-23_totIC-12.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ICSimulation/RealMotif/simu_03/simuMtf_Len-23_totIC-12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ICSimulation/RealMotif/simu_03/simuMtf_Len-23_totIC-12.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ICSimulation/RealMotif/simu_03/simuMtf_Len-8_totIC-10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ICSimulation/RealMotif/simu_03/simuMtf_Len-8_totIC-10.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_BCL6B_06.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_BCL6B_06.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_BHLHE40_03.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_BHLHE40_03.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_CLOCKBMAL_Q6.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_CLOCKBMAL_Q6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_CREB3L1_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_CREB3L1_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_CTCF_10.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_CTCF_10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_E2F_Q3_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_E2F_Q3_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_EBF4_02.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_EBF4_02.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_PPARARXRA_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/Trans_V_PPARARXRA_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/EightMotif/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/FourMotif/Trans_V_AP4_Q6_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/FourMotif/Trans_V_AP4_Q6_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/FourMotif/Trans_V_CLOCKBMAL_Q6.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/FourMotif/Trans_V_CLOCKBMAL_Q6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/FourMotif/Trans_V_E2F3_04.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/FourMotif/Trans_V_E2F3_04.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/FourMotif/Trans_V_PPARARXRA_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/FourMotif/Trans_V_PPARARXRA_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/FourMotif/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/OneMotif/Trans_V_E2F4_03.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/OneMotif/Trans_V_E2F4_03.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/OneMotif/draw.r" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/PFM.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_AP3_Q6.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_AP3_Q6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_APA1_02.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_APA1_02.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_AREB6_03.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_AREB6_03.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_BACH1_Q3.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_BACH1_Q3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_HOXA3PAX5_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_HOXA3PAX5_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_PAX5_06.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/Trans_V_PAX5_06.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/SixMotif/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/TwoMotif/Trans_V_ALX4_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/TwoMotif/Trans_V_ALX4_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/TwoMotif/Trans_V_BCL6B_05.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/TwoMotif/Trans_V_BCL6B_05.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/RealMotif/TwoMotif/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/MoreComplexSituation/SeqGenerate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/PFM.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation1/Trans_V_AP4_Q6_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation1/Trans_V_AP4_Q6_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation1/Trans_V_MYOGNF1_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation1/Trans_V_MYOGNF1_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation1/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation2/Trans_V_BACH1_02.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation2/Trans_V_BACH1_02.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation2/Trans_V_PAX5_06.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation2/Trans_V_PAX5_06.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation2/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation3/Trans_V_CLOCKBMAL_Q6.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation3/Trans_V_CLOCKBMAL_Q6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation3/Trans_V_PPARARXRA_01.SeqLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation3/Trans_V_PPARARXRA_01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/RealMotif/Simulation3/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/SimulationOnTwoMotif/SeqGenerate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataGeneRate/ChIPSeqData/Seq_to_Matrix.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/build_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/build_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/vCNN_lg_core.py" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/vCNN_lg_core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/AUC.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/AUC20000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/AUCNOcolor.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/AUCUnder20000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/AUCUnder5000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/AUCUp5000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/DataShapeAuc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/DatasetSize.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/WorseDistribute.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/CNN1layers128motifs/boxPlot.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/AUC.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/AUC20000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/AUCNOcolor.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/AUCUnder20000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/AUCUnder5000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/AUCUp5000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/DataShapeAuc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/DatasetSize.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/WorseDistribute.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/20190125/DeepBind/boxPlot.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/AUC.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/AUC20000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/AUCNOcolor.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/AUCNOcolor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/AUCUnder20000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/AUCUnder5000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/AUCUp5000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/DataShapeAuc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/DatasetSize.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/WorseDistribute.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/WorseDistribute.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNN1layers128motifs/boxPlot.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/CNNResult/9_model_result.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/AUC.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/AUC20000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/AUCNOcolor.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/AUCNOcolor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/AUCUnder20000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/AUCUnder5000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/AUCUp5000.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/DataShapeAuc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/DatasetSize.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/WorseDistribute.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/WorseDistribute.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ChIPSeq/DeepBind/boxPlot.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/CNNAUC.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/CNNAUC.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/simu_01_CNN_auc.eps" beforeDir="false" afterPath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/simu_01_CNN_auc.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/simu_02_CNN_auc.eps" beforeDir="false" afterPath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/simu_02_CNN_auc.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/simu_03_CNN_auc.eps" beforeDir="false" afterPath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/simu_03_CNN_auc.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/vCNNAUC.csv" beforeDir="false" afterPath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/ICSimulation/vCNNAUC.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/CNNAUC.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/EightMotif_CNN_auc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/EightMotif_CNN_auc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/FourMotif_vCNN_auc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/FourMotif_vCNN_auc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/OneMotif_vCNN_auc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/OneMotif_vCNN_auc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/SixMotif_CNN_auc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/SixMotif_CNN_auc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/TwoMotif_vCNN_auc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/TwoMotif_vCNN_auc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/auc-EightMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/auc-FourMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/auc-OneMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/auc-SixMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/auc-TwoMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/loss-EightMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/loss-FourMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/loss-OneMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/loss-SixMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/history/loss-TwoMotif .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/MoreComplexSituation/vCNNAUC.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/Simulation1_vCNN_auc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/Simulation1_vCNN_auc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/Simulation2_vCNN_auc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/Simulation2_vCNN_auc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/Simulation3_CNN_auc.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/Simulation3_CNN_auc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/history/auc-Simulation1 .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/history/auc-Simulation2 .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/history/auc-Simulation3 .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/history/loss-Simulation1 .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/history/loss-Simulation2 .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/ModelAUC/SimulationOnTwoMotif/history/loss-Simulation3 .png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/ICSimulation/conv_score_simu_01.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/ICSimulation/conv_score_simu_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/ICSimulation/conv_score_simu_02.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/ICSimulation/conv_score_simu_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/ICSimulation/conv_score_simu_03.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/ICSimulation/conv_score_simu_03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_BCL6B_06.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_BCL6B_06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_BHLHE40_03.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_BHLHE40_03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_CLOCKBMAL_Q6.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_CLOCKBMAL_Q6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_CREB3L1_01.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_CREB3L1_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_CTCF_10.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_CTCF_10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_E2F_Q3_01.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_E2F_Q3_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_EBF4_02.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_EBF4_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_PPARARXRA_01.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_EightMotif_Trans_V_PPARARXRA_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_FourMotif_Trans_V_AP4_Q6_01.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_FourMotif_Trans_V_AP4_Q6_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_FourMotif_Trans_V_CLOCKBMAL_Q6.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_FourMotif_Trans_V_CLOCKBMAL_Q6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_FourMotif_Trans_V_E2F3_04.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_FourMotif_Trans_V_E2F3_04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_FourMotif_Trans_V_PPARARXRA_01.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_FourMotif_Trans_V_PPARARXRA_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_OneMotif_Trans_V_E2F4_03.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_OneMotif_Trans_V_E2F4_03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_AP3_Q6.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_AP3_Q6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_APA1_02.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_APA1_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_AREB6_03.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_AREB6_03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_BACH1_Q3.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_BACH1_Q3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_HOXA3PAX5_01.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_HOXA3PAX5_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_PAX5_06.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_SixMotif_Trans_V_PAX5_06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_TwoMotif_Trans_V_ALX4_01.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_TwoMotif_Trans_V_ALX4_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_TwoMotif_Trans_V_BCL6B_05.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/MoreComplexSituation/conv_score_TwoMotif_Trans_V_BCL6B_05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/SimulationOnTwoMotif/conv_score_Simulation1.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/SimulationOnTwoMotif/conv_score_Simulation1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/SimulationOnTwoMotif/conv_score_Simulation2.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/SimulationOnTwoMotif/conv_score_Simulation2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/SimulationOnTwoMotif/conv_score_Simulation3.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/MotifScore/SimulationOnTwoMotif/conv_score_Simulation3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/MotifRebuildComplexSimu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/MotifRebuildIC.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/MotifRebuildTwoMotifSimu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/MotifScoreComplexSituation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/MotifScoreIC.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/MotifScoreSimulationTwoMotif.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/checkComplexSimu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/checkIC.py" beforeDir="false" afterPath="$PROJECT_DIR$/OutPutAnalyse/code/checkIC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/checkResultComparedDeepBind.py" beforeDir="false" afterPath="$PROJECT_DIR$/OutPutAnalyse/code/checkResultComparedDeepBind.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutPutAnalyse/code/checkTwoMotifSimu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/DeepBindChIpSeqCode/train1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/DeepBindChIpSeqCode/train2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/DeepBindChIpSeqCode/train3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/DeepBindChIpSeqCode/train4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/DeepBindChIpSeqCode/train5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/DeepBindChIpSeqCode/train6.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/DeepBindChIpSeqCode/train7.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/DeepBindChIpSeqCode/trainAll.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/DeepBindChIpSeqCode/trainWorseCaseTest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/MoreComplexSituation/trainCNN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/MoreComplexSituation/trainVCNN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/SimulationOnTwoMotif/trainCNN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/SimulationOnTwoMotif/trainVCNN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/TrainOnICSimulation/trainCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrainCode/TrainOnICSimulation/trainCNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainCode/TrainOnICSimulation/trainVCNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrainCode/TrainOnICSimulation/trainVCNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corecode/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/corecode/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corecode/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/corecode/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corecode/ShannoyEntropy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/corecode/build_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/corecode/build_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corecode/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/corecode/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corecode/my_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/corecode/my_history.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corecode/sorted_explain.py" beforeDir="false" afterPath="$PROJECT_DIR$/corecode/sorted_explain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corecode/vCNN_lg_core.py" beforeDir="false" afterPath="$PROJECT_DIR$/corecode/vCNN_lg_core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo/demo.py" afterDir="false" />
-    </list>
+    <list default="true" id="ac313fbf-2e32-4ee2-869c-c8ea3c709e3b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,9 +12,10 @@
     <session id="1251003373">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -369,7 +122,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/files/schoolWork/BayesianCNN/code" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
@@ -402,15 +155,9 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24979591" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25469387" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -418,12 +165,18 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Remote Host" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,16 +203,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/corecode/ShannoyEntropy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1025">
-          <caret line="169" column="41" selection-start-line="169" selection-start-column="41" selection-end-line="169" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/corecode/ShannoyEntropy.py" />
     <entry file="file://$PROJECT_DIR$/corecode/sorted_explain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9900" />
@@ -507,68 +251,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/theoretical/code/limitsS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1350">
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/theoretical/code/limitsS.py" />
     <entry file="file://$PROJECT_DIR$/theoretical/code/runSimuIC.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/theoretical/code/RunSimulationICNumerical.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-257">
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-257" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/theoretical/code/SimulationICNumerical.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-257">
           <caret line="98" column="38" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/theoretical/code/statisticICsimu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1550">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1550" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/theoretical/code/statisticICsimuNumerical.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2725">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-2725" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/theoretical/code/CNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4457">
           <caret line="1" column="69" selection-start-line="1" selection-start-column="69" selection-end-line="1" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -580,13 +292,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/Analysis/GeneRateCPRonsc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/Analysis/ComPareResult.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -600,11 +306,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/CisfinderFile/CisfinderScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-607">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-607" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/CisfinderFile/CisfinderScan.sh">
@@ -618,40 +320,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/CisfinderFile/mergePeaks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/CisfinderFile/mergePeaksParallel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/CisfinderFile/SplitMotifs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/CisfinderFile/GeneRateCisFInderScan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/vCNNB/VCNNBasset.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -660,11 +338,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/vCNNB/TrainVCNNB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-507">
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-507" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/CNNB/CNNBasset.py">
@@ -688,11 +362,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/TimeCost/TimeCost.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1875">
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1875" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vCNNMD/code/TimeCost/VCNNTimeCost.py">

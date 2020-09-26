@@ -26,7 +26,7 @@ def run_Simulation_data(KernelLen, KernelNum, RandomSeed,rho, epsilon):
         ret = [it.split("/")[-1].replace("(", "/(") +"/" for it in pre]
         return ret
     cmd = "/home/lijy/anaconda2/bin/ipython ../../corecode/main.py"
-    mode_lst = ["vCNN"]
+    mode_lst = ["vCNNNSHL"]
 
     data_root = "../../Data/JasPerMotif/HDF5/"
     result_root = "../../OutPutAnalyse/result/JasPerMotif/"
@@ -37,7 +37,7 @@ def run_Simulation_data(KernelLen, KernelNum, RandomSeed,rho, epsilon):
     for data_info in data_info_lst:
         for mode in mode_lst:
             result_path = result_root + data_info
-            modelsave_output_prefix = result_path + '/vCNN/'
+            modelsave_output_prefix = result_path + '/vCNNNSHL/'
             modelsave_output_filename = modelsave_output_prefix + "/model_KernelNum-" + str(
                 KernelNum) + "_initKernelLen-" + str(KernelLen) + "_maxKernelLen-40_seed-" + str(RandomSeed)\
                 + "_rho-" + str(rho).replace(".", "") + "_epsilon-" + str(epsilon).replace("-","").replace(".","") + ".hdf5"
@@ -58,27 +58,13 @@ def run_Simulation_data(KernelLen, KernelNum, RandomSeed,rho, epsilon):
 
 if __name__ == '__main__':
     import sys
-    if len(sys.argv)<3:
-        ker_size_list = range(6, 28, 2)
-        number_of_ker_list = range(64, 129, 32)
-        RandomSeed = int(sys.argv[1])
-        rholist = [0.9, 0.99, 0.999]
-        epsilonlist = [1e-4, 1e-6, 1e-8]
+    ker_size_list = range(6, 28, 2)
+    RandomSeed = int(sys.argv[1])
+    KernelNum = int(sys.argv[2])
+    rholist = [0.9, 0.99, 0.999]
+    epsilonlist = [1e-4, 1e-6, 1e-8]
 
-        for rho in rholist:
-            for epsilon in epsilonlist:
-                for KernelNum in number_of_ker_list:
-                    for KernelLen in ker_size_list:
-                        run_Simulation_data(str(KernelLen), str(KernelNum), str(RandomSeed),str(rho), str(epsilon))
-    else:
-        ker_size_list = range(6, 28, 2)
-        RandomSeed = int(sys.argv[1])
-        KernelNum = int(sys.argv[2])
-        rholist = [0.9, 0.99, 0.999]
-        epsilonlist = [1e-4, 1e-6, 1e-8]
-
-        for rho in rholist:
-            for epsilon in epsilonlist:
-                for KernelLen in ker_size_list:
-                    run_Simulation_data(str(KernelLen), str(KernelNum), str(RandomSeed), str(rho), str(epsilon))
-
+    for rho in rholist:
+        for epsilon in epsilonlist:
+            for KernelLen in ker_size_list:
+                run_Simulation_data(str(KernelLen), str(KernelNum), str(RandomSeed),str(rho), str(epsilon))

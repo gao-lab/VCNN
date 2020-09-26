@@ -60,7 +60,6 @@ def pick_gpu_lowest_memory():
     # if sorted(memory_gpu_map)[0][1]==1:
     #     best_memory, best_gpu = sorted(memory_gpu_map)[1]
     # else:
-    #     best_memory, best_gpu = sorted(memory_gpu_map)[0]
     best_memory, best_gpu = sorted(memory_gpu_map)[0]
     return best_gpu
 
@@ -120,78 +119,48 @@ if __name__ == "__main__":
 
     data_path = sys.argv[1]
     result_root = sys.argv[2]
-    data_info = sys.argv[3]
-    mode = sys.argv[4]
-    KernelLen = int(sys.argv[5])
-    KernelNum = int(sys.argv[6])
-    RandomSeed = int(sys.argv[7])
-    try:
-        lr = 1
-        rho = float(sys.argv[8])
-        epsilon = float(sys.argv[9])
-    except:
-        lr=1
-        rho = 0.99
-        epsilon = 1.0e-8
+    # data_info = sys.argv[3]
+    mode = sys.argv[3]
+    RandomSeed = int(sys.argv[4])
 
 
-
-    # loading the data set
-    test_dataset = data_path + "test.hdf5"
-    training_dataset = data_path + "train.hdf5"
-    X_test, Y_test = load_data(test_dataset)
-    X_train, Y_train = load_data(training_dataset)
-    data_set = [[X_train,Y_train],[X_test,Y_test]]
-    seq_len = X_test[0].shape[0]
-    input_shape = X_test[0].shape
 
     # init hyper-parameter
-    max_ker_len = min(int(seq_len * 0.5),40)
-    batch_size = 100
+    batch_size = 128
 
     get_session()
 
     # Determine the type of model
-    if mode == "CNN":
-        print("training CNN")
-        time.sleep(2)
-        result_path = result_root + data_info
-        mkdir(result_path)
-        modelsave_output_prefix = result_path + '/CNN/'
-        mkdir(modelsave_output_prefix)
-
-        auc, info = train_CNN(input_shape = input_shape,modelsave_output_prefix=modelsave_output_prefix,
-                               data_set = data_set, number_of_kernel=KernelNum, kernel_size=KernelLen,
-                               random_seed=RandomSeed, batch_size=batch_size,epoch_scheme=1000,lr=lr,rho=rho,epsilon=epsilon)
-
-    elif mode == "vCNN":
+    if mode == "vCNN":
         print("training vCNN")
         time.sleep(2)
-
-        result_path = result_root + data_info
+        result_path = result_root
         mkdir(result_path)
         modelsave_output_prefix = result_path + '/vCNN/'
         mkdir(modelsave_output_prefix)
-        kernel_init_dict = {str(KernelLen): KernelNum}
-        auc, info = train_vCNN(input_shape=input_shape, modelsave_output_prefix=modelsave_output_prefix,
-                               data_set=data_set, number_of_kernel=KernelNum,
-                               init_ker_len_dict=kernel_init_dict, max_ker_len=max_ker_len,
-                               random_seed=RandomSeed, batch_size=batch_size, epoch_scheme=1000,lr=lr,rho=rho,epsilon=epsilon)
 
-    elif mode == "vCNNNSHL":
-        print("training vCNNNSHL")
+        auc, info = train_vCNN(modelsave_output_prefix,data_path,
+             RandomSeed, batch_size, epoch_scheme=1000)
+    elif mode == "3vCNN":
+        print("training 3vCNN")
         time.sleep(2)
 
-        result_path = result_root + data_info
+        result_path = result_root
         mkdir(result_path)
-        modelsave_output_prefix = result_path + '/vCNNNSHL/'
+        modelsave_output_prefix = result_path + '/3vCNN/'
         mkdir(modelsave_output_prefix)
-        kernel_init_dict = {str(KernelLen): KernelNum}
-        auc, info = train_vCNNnoSHL(input_shape=input_shape, modelsave_output_prefix=modelsave_output_prefix,
-                               data_set=data_set, number_of_kernel=KernelNum,
-                               init_ker_len_dict=kernel_init_dict, max_ker_len=max_ker_len,
-                               random_seed=RandomSeed, batch_size=batch_size, epoch_scheme=1000,lr=lr,rho=rho,epsilon=epsilon)
 
+        auc, info = train_3vCNN(modelsave_output_prefix,data_path,
+             RandomSeed, batch_size, epoch_scheme=1000)
 
+    elif mode == "basset":
+        print("training basset")
+        time.sleep(2)
 
+        result_path = result_root
+        mkdir(result_path)
+        modelsave_output_prefix = result_path + '/basset/'
+        mkdir(modelsave_output_prefix)
 
+        auc, info = train_basset(modelsave_output_prefix,data_path,
+                                 RandomSeed, batch_size, epoch_scheme=1000)

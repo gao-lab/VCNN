@@ -1,0 +1,10 @@
+1000个epoch
+使用的是using RMSprop updates on minibatches (Tieleman and Hinton 2012).Default optimization parameters for Basset 
+Learning rate 0.002
+- [ ] Optimizer 1 rmsprop 
+Momentum=alpha=0.98
+- [ ] Optimizer 2 Adam
+Beta1=0.9
+Beta2=0.999
+
+有使用reduce lr。最小是0.0001

@@ -15,17 +15,11 @@ def mkdir(path):
     else:
         return False
 
-def run_model(RandomSeed,mode):
+def run_model(RandomSeed,kernelnum):
     
-    cmd = "/home/lijy/anaconda2/bin/ipython "
-    
-    if mode == "CNN":
-        cmd = cmd + " trainCNN.py " + str(RandomSeed)
-    elif mode == "vCNN":
-        cmd = cmd + " trainVCNN.py " + str(RandomSeed)
-    else:
-        return
-    print(cmd)
+    cmd = "/home/lijy/anaconda2/bin/ipython /rd2/lijy/KDD/vCNNFinal/TrainCode/JasperMotifSimulation"
+    cmd = cmd + " trainVCNNSHL.py " + str(RandomSeed)+" "+str(kernelnum)
+
     os.system(cmd)
     
 
@@ -36,15 +30,15 @@ def run_model(RandomSeed,mode):
 if __name__ == '__main__':
 
     # GPU_SET = sys.argv[1]
-    
+    import time
     randomSeedslist = [121, 1231, 12341, 1234, 123, 432, 16, 233, 2333, 23, 245, 34561, 3456, 4321,12, 567]
-    modelType = ["CNN", "vCNN"]
-    pool = Pool(processes=32)
+    number_of_ker_list = range(64, 129, 32)
+    pool = Pool(processes=48)
     
     for RandomSeed in randomSeedslist:
-        for mode in modelType:
-            # run_model(RandomSeed, mode)
-            pool.apply_async(run_model, (RandomSeed,mode))
+        for kernelnum in number_of_ker_list:
+            pool.apply_async(run_model, (RandomSeed,kernelnum))
+            time.sleep(10)
     pool.close()
     pool.join()
     
